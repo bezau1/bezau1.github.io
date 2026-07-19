@@ -28,28 +28,33 @@
       margin: 0 auto;
     }
 
-    .hero h1 {
+    .hero, .ribbon-wrap {
+      position: relative;
+    }
+
+    h1 {
       position: relative;
       z-index: 1;
       font-size: 34px;
-      margin-bottom: 25px;
+      margin: 0;
       letter-spacing: 1px;
     }
 
     .ribbon-wrap {
-      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 34px 0;
+      margin-bottom: 25px;
     }
 
     .ribbon-wrap img.ribbon {
       position: absolute;
       z-index: 0;
-      width: 130%;
-      max-width: 820px;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
+      width: min(115%, 480px);
       pointer-events: none;
       user-select: none;
     }
@@ -86,12 +91,24 @@
 
     .buttons a:hover {
       transition-duration: 0s;
-      color: #ffcc00;
       border-color: transparent;
       background:
         linear-gradient(#111, #111) padding-box,
         url('gradientpurple.png') border-box;
       background-size: auto, cover;
+    }
+
+    .buttons a .link-text {
+      display: inline-block;
+    }
+
+    .buttons a:hover .link-text {
+      color: transparent;
+      background-image: url('gradientpurple.png');
+      background-attachment: fixed;
+      background-size: 100vw 100vh;
+      -webkit-background-clip: text;
+      background-clip: text;
     }
 
 
@@ -129,31 +146,31 @@
     </div>
 
     <div class="buttons">
-      <a href="https://nubertislife.com/Undernet/">Undernet</a>
-      <a href="https://nubertislife.com/UT-Clock-App/">UT Clock App Remake</a>
-      <a href="https://nubertislife.com/potassiumsite/">Potassium Site</a>
-      <a href="https://nubertislife.com/nubert/">Pray to Nubert</a>
-      <a href="https://nubertislife.com/KinitoDESK/">KinitoDESK</a>
-      <a href="https://github.com/bezau1/deltarune404">Deltarune Themed 404</a>
-      <a href="https://github.com/bezau1/deltarune404">Potato SideLoading</a>
-      <a href="https://nubertislife.com/KANKA/">The Worlds Dumbest AI (Turkish)</a>
-      <a href="https://nubertislife.com/deltarune/">Deltarune (WARNING FIRST BUY FROM STEAM)</a>
-      <a href="https://nubertislife.com/icecreamphosphorus/">Phosphorus</a>
-      <a href="https://github.com/bezau1/ProtectiveCoconut">Protective Coconut</a>
-      <a href="https://nubertislife.com/WHOISTHEKNIGHT/">Who Is The Roaring Knight?</a>
-      <a href="https://nubertislife.com/repo/">Cydia Repository</a>
-      <a href="https://nubertislife.com/UTDRSource/">AltStore/Sidestore Repo For Toby Fox Games</a>
-      <a href="https://github.com/bezau1/UnderSearch">UnderSearch: UnderSearchUndertale/Deltarune Themed New Page</a>
-      <a href="https://nubertislife.com/spamtorture/">TORTURE SPAMTON :3</a>
-      <a href="https://nubertislife.com/UnderTime/">A simple time viewer</a>
-      <a href="https://nubertislife.com/gamblingwithmsloafy/">Gamble your lifesavings to Ms. Loafy</a>
-      <a href="https://nubertislife.com/playandbewithmsloafy/">Play and be with Ms. Loafy</a>
-      <a href="https://nubertislife.com/talkdog/">Talk Dog</a>
-      <a href="https://nubertislife.com/talkdog/">Pepto: The Restoraunt</a>
-      <a href="https://nubertislife.com/selphoto/">Sen daha selsin</a>
-      <a href="https://nubertislife.com/textspammer/">Text Spammer</a>
-      <a href="https://nubertislife.com/downdetectorsdowndetectorsdowndetectorsdowndetectorsdowndetector/">Downdetector's Downdetector's Downdetector's Downdetector's Downdetector</a>
-      <a href="https://nubertislife.com/BadIdeas/">The Weirder Ones</a>
+      <a href="https://nubertislife.com/Undernet/"><span class="link-text">Undernet</span></a>
+      <a href="https://nubertislife.com/UT-Clock-App/"><span class="link-text">UT Clock App Remake</span></a>
+      <a href="https://nubertislife.com/potassiumsite/"><span class="link-text">Potassium Site</span></a>
+      <a href="https://nubertislife.com/nubert/"><span class="link-text">Pray to Nubert</span></a>
+      <a href="https://nubertislife.com/KinitoDESK/"><span class="link-text">KinitoDESK</span></a>
+      <a href="https://github.com/bezau1/deltarune404"><span class="link-text">Deltarune Themed 404</span></a>
+      <a href="https://github.com/bezau1/deltarune404"><span class="link-text">Potato SideLoading</span></a>
+      <a href="https://nubertislife.com/KANKA/"><span class="link-text">The Worlds Dumbest AI (Turkish)</span></a>
+      <a href="https://nubertislife.com/deltarune/"><span class="link-text">Deltarune (WARNING FIRST BUY FROM STEAM)</span></a>
+      <a href="https://nubertislife.com/icecreamphosphorus/"><span class="link-text">Phosphorus</span></a>
+      <a href="https://github.com/bezau1/ProtectiveCoconut"><span class="link-text">Protective Coconut</span></a>
+      <a href="https://nubertislife.com/WHOISTHEKNIGHT/"><span class="link-text">Who Is The Roaring Knight?</span></a>
+      <a href="https://nubertislife.com/repo/"><span class="link-text">Cydia Repository</span></a>
+      <a href="https://nubertislife.com/UTDRSource/"><span class="link-text">AltStore/Sidestore Repo For Toby Fox Games</span></a>
+      <a href="https://github.com/bezau1/UnderSearch"><span class="link-text">UnderSearch: UnderSearchUndertale/Deltarune Themed New Page</span></a>
+      <a href="https://nubertislife.com/spamtorture/"><span class="link-text">TORTURE SPAMTON :3</span></a>
+      <a href="https://nubertislife.com/UnderTime/"><span class="link-text">A simple time viewer</span></a>
+      <a href="https://nubertislife.com/gamblingwithmsloafy/"><span class="link-text">Gamble your lifesavings to Ms. Loafy</span></a>
+      <a href="https://nubertislife.com/playandbewithmsloafy/"><span class="link-text">Play and be with Ms. Loafy</span></a>
+      <a href="https://nubertislife.com/talkdog/"><span class="link-text">Talk Dog</span></a>
+      <a href="https://nubertislife.com/talkdog/"><span class="link-text">Pepto: The Restoraunt</span></a>
+      <a href="https://nubertislife.com/selphoto/"><span class="link-text">Sen daha selsin</span></a>
+      <a href="https://nubertislife.com/textspammer/"><span class="link-text">Text Spammer</span></a>
+      <a href="https://nubertislife.com/downdetectorsdowndetectorsdowndetectorsdowndetectorsdowndetector/"><span class="link-text">Downdetector's Downdetector's Downdetector's Downdetector's Downdetector</span></a>
+      <a href="https://nubertislife.com/BadIdeas/"><span class="link-text">The Weirder Ones</span></a>
     </div>
 
     <div class="icons">
