@@ -23,6 +23,24 @@
       padding: 60px 20px;
     }
 
+    body {
+      background-image: url('bg1.png'), url('bg2.png');
+      background-position: 0px 0px, 47px 0px;
+      background-size: 94px;
+      background-repeat: repeat;
+      background-attachment: fixed;
+      animation: bg-slide 2.67s linear infinite;
+    }
+
+    @keyframes bg-slide {
+      from {
+        background-position: 0px 0px, 47px 0px;
+      }
+      to {
+        background-position: -188px -188px, -141px -141px;
+      }
+    }
+
     .container {
       max-width: 720px;
       margin: 0 auto;
@@ -64,7 +82,8 @@
       transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
     }
 
-    .buttons a:hover {
+    .buttons a:hover,
+    .buttons a.kb-focus {
       transition-duration: 0s;
       border-color: transparent;
       background:
@@ -77,13 +96,19 @@
       display: inline-block;
     }
 
-    .buttons a:hover .link-text {
+    .buttons a:hover .link-text,
+    .buttons a.kb-focus .link-text {
       color: transparent;
       background-image: url('gradientpurple.png');
       background-attachment: fixed;
       background-size: 100vw 100vh;
       -webkit-background-clip: text;
       background-clip: text;
+    }
+
+    a:focus,
+    a:focus-visible {
+      outline: none;
     }
 
 
@@ -102,8 +127,14 @@
       transition: filter 0.2s ease;
     }
 
-    .icons img:hover {
+    .icons img:hover,
+    .icons a.kb-focus img {
       filter: brightness(150%);
+    }
+
+    .icons a.kb-focus {
+      outline: 2px dashed #fff;
+      outline-offset: 4px;
     }
 
     footer {
@@ -148,7 +179,7 @@
       <a href="https://youtube.com/@happypatata?si=SycHMUdvgpCQXTGK" target="_blank">
         <img src="social-youtube-undertale.png" alt="YouTube">
       </a>
-      <a href="https://discord.gg/yourinvite" target="_blank">
+      <a href="https://discord.gg/invite" target="_blank">
         <img src="social-discord-undertale.png" alt="Discord">
       </a>
       <a href="https://steamcommunity.com/id/bezau1/" target="_blank">
@@ -160,5 +191,47 @@
     <a href="https://www.rejectconvenience.com/"><img src="https://www.rejectconvenience.com/images/88x31/88x31.jpg" title="Reject convenience and be kind and patient" alt="Reject Convenience" /></a> <a href="https://possiblyaxolotl.com"><img src="https://possiblyaxolotl.com/assets/88x31/88x31.png" /></a> <a href="https://i-eat.rocks"><img src="https://i-eat.rocks/images/ui/ieatrocks.png" alt="i-eat.rocks" /></a> <a href="https://avq.neocities.org" target="_blank"><img alt="AVQ's Homepage" title="AVQ's Homepage" src="https://avq.neocities.org/assets/AVQ88x31.gif"></a>
              </footer>
   </div>
+
+  <script>
+    // Keyboard navigation
+    (function () {
+      const items = Array.from(document.querySelectorAll('.buttons a, .icons a'));
+      let index = -1;
+
+      function setFocus(newIndex) {
+        if (index >= 0) items[index].classList.remove('kb-focus');
+        index = (newIndex + items.length) % items.length;
+        items[index].classList.add('kb-focus');
+        items[index].focus({ preventScroll: false });
+        items[index].scrollIntoView({ block: 'center', behavior: 'smooth' });
+      }
+
+      // If the user tabs to a link normally, keep kb-focus in sync.
+      items.forEach((el, i) => {
+        el.addEventListener('focus', () => {
+          if (index >= 0) items[index].classList.remove('kb-focus');
+          index = i;
+          el.classList.add('kb-focus');
+        });
+        el.addEventListener('blur', () => {
+          el.classList.remove('kb-focus');
+        });
+      });
+
+      document.addEventListener('keydown', (e) => {
+        const key = e.key.toLowerCase();
+        const forward = ['arrowdown', 'arrowright', 's', 'd'];
+        const backward = ['arrowup', 'arrowleft', 'w', 'a'];
+
+        if (forward.includes(key)) {
+          e.preventDefault();
+          setFocus(index + 1);
+        } else if (backward.includes(key)) {
+          e.preventDefault();
+          setFocus(index - 1);
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
