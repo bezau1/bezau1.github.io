@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Haker tip uno: inspec elemen -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -196,7 +197,7 @@
     </footer>
   </div>
   <script>
-    // Keyboard navigation
+   
     (function () {
       const items = Array.from(document.querySelectorAll('.buttons a, .icons a'));
       let index = -1;
@@ -207,7 +208,7 @@
         items[index].focus({ preventScroll: false });
         items[index].scrollIntoView({ block: 'center', behavior: 'smooth' });
       }
-      // If the user tabs to a link normally, keep kb-focus in sync.
+     
       items.forEach((el, i) => {
         el.addEventListener('focus', () => {
           if (index >= 0) items[index].classList.remove('kb-focus');
